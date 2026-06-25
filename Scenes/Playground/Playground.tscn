@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://khx8ko08bfmi" path="res://Scenes/Playground/Playground.cs" id="1_r5fjo"]
 [ext_resource type="Texture2D" uid="uid://cd0jhmdjktpth" path="res://Ass/background-img.png" id="2_bdrva"]
-[ext_resource type="PackedScene" uid="uid://pxp34vdoefaq" path="res://Tank/Tank.tscn" id="2_hh1aa"]
 [ext_resource type="PackedScene" uid="uid://ccsrataya7mst" path="res://Scenes/Levels/Eclipse.tscn" id="4_8qsbe"]
 
 [node name="Playground" type="Node2D" unique_id=1664024287]
@@ -12,10 +11,24 @@ script = ExtResource("1_r5fjo")
 position = Vector2(800, 450)
 texture = ExtResource("2_bdrva")
 
-[node name="Eclipse" parent="." unique_id=734834413 instance=ExtResource("4_8qsbe")]
+[node name="Level" type="Node2D" parent="." unique_id=1422692863]
+
+[node name="Eclipse" parent="Level" unique_id=734834413 instance=ExtResource("4_8qsbe")]
 visible = false
 position = Vector2(800, 450)
 
-[node name="Tank" parent="." unique_id=1674320353 instance=ExtResource("2_hh1aa")]
-position = Vector2(60.89583, 48.124382)
-rotation = 3.1415927
+[node name="Tanks" type="Node2D" parent="." unique_id=228446648]
+
+[node name="Markers" type="Node2D" parent="Tanks" unique_id=1813488080]
+
+[node name="Mark1" type="Node2D" parent="Tanks/Markers" unique_id=1037584534]
+position = Vector2(57.881393, 49.13565)
+
+[node name="Mark2" type="Node2D" parent="Tanks/Markers" unique_id=371081752]
+position = Vector2(1542.6195, 50.082985)
+
+[node name="Mark3" type="Node2D" parent="Tanks/Markers" unique_id=262812789]
+position = Vector2(57.7452, 849.5145)
+
+[node name="Mark4" type="Node2D" parent="Tanks/Markers" unique_id=1162498893]
+position = Vector2(1543.6014, 850.757)

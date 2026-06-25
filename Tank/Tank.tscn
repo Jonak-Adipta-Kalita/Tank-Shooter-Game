@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pxp34vdoefaq"]
 
 [ext_resource type="Script" uid="uid://du1g7yux5vyx6" path="res://Tank/Tank.cs" id="1_gw6p6"]
-[ext_resource type="Texture2D" uid="uid://cbkksity54ste" path="res://Ass/tank-animation.png" id="2_s37we"]
+[ext_resource type="Texture2D" uid="uid://o3kf4pyg5kvw" path="res://Ass/tank-animation.png" id="2_s37we"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0joxu"]
 atlas = ExtResource("2_s37we")
@@ -275,14 +275,13 @@ radius = 17.056442
 height = 47.40926
 
 [node name="Tank" type="CharacterBody2D" unique_id=494329469]
-position = Vector2(0, 1)
 script = ExtResource("1_gw6p6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204658594]
 sprite_frames = SubResource("SpriteFrames_dyb0s")
 animation = &"tank_anim"
 autoplay = "tank_anim"
-frame_progress = 0.3695077
+frame_progress = 0.3893204
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185783430]
 position = Vector2(15.724274, -2.1620808)

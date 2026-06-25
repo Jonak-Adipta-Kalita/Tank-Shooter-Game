@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class Tank : CharacterBody2D
@@ -51,12 +50,10 @@ public partial class Tank : CharacterBody2D
 		);
 
 		bool allPressed = Input.IsActionPressed("move_right") || Input.IsActionPressed("move_left") || Input.IsActionPressed("move_down") || Input.IsActionPressed("move_up");
-		GD.Print(allPressed);
 
 		if (allPressed)
 		{
 			_time += (float)delta;
-			GD.Print(_time.ToString());
 		}
 		else
 		{

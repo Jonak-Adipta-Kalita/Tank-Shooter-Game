@@ -3,14 +3,18 @@
 [ext_resource type="Script" uid="uid://khx8ko08bfmi" path="res://Scenes/Playground/Playground.cs" id="1_r5fjo"]
 [ext_resource type="Texture2D" uid="uid://cd0jhmdjktpth" path="res://Ass/background-img.png" id="2_bdrva"]
 [ext_resource type="PackedScene" uid="uid://pxp34vdoefaq" path="res://Tank/Tank.tscn" id="2_hh1aa"]
+[ext_resource type="PackedScene" uid="uid://ccsrataya7mst" path="res://Scenes/Levels/Eclipse.tscn" id="4_8qsbe"]
 
 [node name="Playground" type="Node2D" unique_id=1664024287]
 script = ExtResource("1_r5fjo")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=2104343788]
-position = Vector2(799.9981, 450.0368)
+position = Vector2(800, 450)
 texture = ExtResource("2_bdrva")
 
 [node name="Tank" parent="." unique_id=1674320353 instance=ExtResource("2_hh1aa")]
 position = Vector2(60.89583, 48.124382)
 rotation = 3.1415927
+
+[node name="Eclipse" parent="." unique_id=734834413 instance=ExtResource("4_8qsbe")]
+position = Vector2(800, 450)

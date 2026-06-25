@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ccsrataya7mst"]
+
+[ext_resource type="Texture2D" uid="uid://b0lgw7s8xkra7" path="res://Ass/level-masks/eclipse.png" id="1_r4buh"]
+
+[node name="Eclipse" type="Sprite2D" unique_id=1000909671]
+texture = ExtResource("1_r4buh")

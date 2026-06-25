@@ -2,5 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://b0lgw7s8xkra7" path="res://Ass/level-masks/eclipse.png" id="1_r4buh"]
 
-[node name="Eclipse" type="Sprite2D" unique_id=1000909671]
+[node name="Eclipse" type="Area2D" unique_id=256911625]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002948990]
 texture = ExtResource("1_r4buh")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="." unique_id=87814287]
+position = Vector2(231.00014, -414)
+scale = Vector2(0.8886415, 0.9081183)
+polygon = PackedVector2Array(140.66406, 128.83786, 104.65405, 178.39087, 83.27307, 330.35345, 122.65906, 434.9654, 166.74939, 476.3694, 190.74939, 477.3694, 241.94226, 444.876, 281.32825, 358.9841, 277.95227, 229.04507, 246.44348, 142.052, 190.74939, 109.369385, 156.74939, 121.369385)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=435812394]
+position = Vector2(433, -570)
+scale = Vector2(0.75089973, 0.5675904)
+polygon = PackedVector2Array(248.50928, 716.4241, 219.50928, 780.4241, 207.75073, 916.15356, 227.7268, 1023.6254, 255.69324, 1065.9094, 288.9867, 1081.7659, 335.5974, 1037.7201, 362.23218, 910.86804, 359.5686, 817.49084, 335.5974, 731.161, 289.50928, 695.4241, 255.50928, 707.4241)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=902198152]
+position = Vector2(-800, -450)
+polygon = PackedVector2Array(152, 159, 123, 223, 118, 357, 140, 466, 169, 505, 193, 506, 233, 469, 257, 353, 251, 261, 231, 179, 193, 138, 159, 150)

@@ -9,7 +9,6 @@
 script = ExtResource("1_r5fjo")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=2104343788]
-visible = false
 position = Vector2(800, 450)
 texture = ExtResource("2_bdrva")
 
@@ -17,6 +16,5 @@ texture = ExtResource("2_bdrva")
 position = Vector2(800, 450)
 
 [node name="Tank" parent="." unique_id=1674320353 instance=ExtResource("2_hh1aa")]
-visible = false
 position = Vector2(60.89583, 48.124382)
 rotation = 3.1415927

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://pxp34vdoefaq"]
 
 [ext_resource type="Script" uid="uid://du1g7yux5vyx6" path="res://Tank/Tank.cs" id="1_gw6p6"]
+[ext_resource type="Texture2D" uid="uid://1883p7xcbkjg" path="res://Ass/tank.png" id="2_a43km"]
 
 [node name="Tank" type="Node2D" unique_id=1674320353]
 script = ExtResource("1_gw6p6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=70446368]
+texture = ExtResource("2_a43km")

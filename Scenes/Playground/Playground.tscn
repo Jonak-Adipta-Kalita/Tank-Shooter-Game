@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://6lb4el74otnn"]
 
 [ext_resource type="Script" uid="uid://khx8ko08bfmi" path="res://Scenes/Playground/Playground.cs" id="1_r5fjo"]
+[ext_resource type="Texture2D" uid="uid://cd0jhmdjktpth" path="res://Ass/background-img.png" id="2_bdrva"]
+[ext_resource type="PackedScene" uid="uid://pxp34vdoefaq" path="res://Tank/Tank.tscn" id="2_hh1aa"]
 
 [node name="Playground" type="Node2D" unique_id=1664024287]
 script = ExtResource("1_r5fjo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2104343788]
+position = Vector2(799.9981, 450.0368)
+texture = ExtResource("2_bdrva")
+
+[node name="Tank" parent="." unique_id=1674320353 instance=ExtResource("2_hh1aa")]
+position = Vector2(60.89583, 48.124382)
+rotation = 3.1415927

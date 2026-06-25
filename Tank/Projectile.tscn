@@ -83,6 +83,7 @@ script = ExtResource("1_lc2b3")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=533447181]
 sprite_frames = SubResource("SpriteFrames_tec37")
 animation = &"projectile"
+autoplay = "projectile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1834808242]
 position = Vector2(1.0836544, 0.45846748)

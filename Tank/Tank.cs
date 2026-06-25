@@ -13,12 +13,17 @@ public partial class Tank : CharacterBody2D
 	private float _speed = 0f;
 	private float _time = 0f;
 
+	private CharacterBody2D Projectile;
+
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
+
+		Projectile = GetNode<CharacterBody2D>("Projectile");
+		Projectile.Visible = false;
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Vector2.Zero;
 		_speed += Initial_Speed + _time * Acceleration;

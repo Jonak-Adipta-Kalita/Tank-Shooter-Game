@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://du1g7yux5vyx6" path="res://Tank/Tank.cs" id="1_gw6p6"]
 [ext_resource type="Texture2D" uid="uid://o3kf4pyg5kvw" path="res://Ass/tank-animation.png" id="2_s37we"]
+[ext_resource type="PackedScene" uid="uid://os4lpp2goi6i" path="res://Tank/Projectile.tscn" id="3_s37we"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0joxu"]
 atlas = ExtResource("2_s37we")
@@ -281,8 +282,11 @@ script = ExtResource("1_gw6p6")
 sprite_frames = SubResource("SpriteFrames_dyb0s")
 animation = &"tank_anim"
 autoplay = "tank_anim"
-frame_progress = 0.3893204
+frame_progress = 0.7194746
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185783430]
 position = Vector2(15.724274, -2.1620808)
 shape = SubResource("CapsuleShape2D_tec37")
+
+[node name="Projectile" parent="." unique_id=821334371 instance=ExtResource("3_s37we")]
+position = Vector2(-35.545372, -3.1934242)

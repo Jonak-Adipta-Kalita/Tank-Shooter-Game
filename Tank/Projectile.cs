@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class Projectile : CharacterBody2D
 {
 	public Vector2 position;

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass, Icon("res://Ass/tank.png")]
 public partial class Tank : CharacterBody2D
 {
 	[Export]

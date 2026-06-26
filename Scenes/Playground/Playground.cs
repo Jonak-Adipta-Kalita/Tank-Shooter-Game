@@ -79,8 +79,6 @@ public partial class Playground : Node2D
 		GD.Print("Connected. Waiting for server to spawn tanks...");
 	}
 
-
-
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = true,
 		TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	public void SpawnTank(int peerId, Vector2 spawnPos)

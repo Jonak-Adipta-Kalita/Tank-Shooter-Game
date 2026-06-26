@@ -5,11 +5,10 @@ public partial class Projectile : CharacterBody2D
 	public Vector2 position;
 	public float rotation;
 	public float direction;
+	public Tank OwnerTank;
 
 	[Export]
 	public float Speed = -200;
-
-	public Tank OwnerTank;
 
 	public override void _Ready()
 	{
@@ -28,7 +27,8 @@ public partial class Projectile : CharacterBody2D
 
 			if (collision.GetCollider() is Tank tank && tank != OwnerTank)
 			{
-				tank.GotHit();
+				tank.Rpc("GotHit");
+
 				QueueFree();
 				return;
 			}

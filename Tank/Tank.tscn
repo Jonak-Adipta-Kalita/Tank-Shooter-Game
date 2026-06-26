@@ -270,14 +270,9 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tec37"]
-radius = 17.056442
-height = 47.40926
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dyb0s"]
-radius = 9.62993
-
 [node name="Tank" type="CharacterBody2D" unique_id=494329469]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_gw6p6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204658594]
@@ -286,13 +281,8 @@ animation = &"tank_anim"
 autoplay = "tank_anim"
 frame_progress = 0.7194746
 
-[node name="Collision2" type="CollisionShape2D" parent="." unique_id=185783430]
-position = Vector2(15.724274, -2.1620808)
-shape = SubResource("CapsuleShape2D_tec37")
-
-[node name="Collision1" type="CollisionShape2D" parent="." unique_id=1648385789]
-position = Vector2(-15.352737, -2.8489609)
-shape = SubResource("CircleShape2D_dyb0s")
+[node name="Collider" type="CollisionPolygon2D" parent="." unique_id=1612590406]
+polygon = PackedVector2Array(-26, -11, -29, -8, -29, 2, -18, 9, -7, 8, -4, 16, 4, 22, 18, 24, 30, 18, 33, 9, 34, -9, 30, -20, 26, -25, 14, -28, 4, -25, -2, -15, -3, -12, -8, -12, -15, -15, -22, -14)
 
 [node name="Projectile" type="Node2D" parent="." unique_id=626173883]
 position = Vector2(-32.082073, -2.8427162)

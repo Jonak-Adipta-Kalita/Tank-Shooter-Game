@@ -71,6 +71,11 @@ rotate_right={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="global_world"
+2d_render/layer_2="hitboxes"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

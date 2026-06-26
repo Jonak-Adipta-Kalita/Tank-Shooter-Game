@@ -87,11 +87,11 @@ public partial class Tank : CharacterBody2D
 
 		Visible = false;
 
-		GetNode<CollisionShape2D>("Collision1").SetDeferred("disabled", true);
-		GetNode<CollisionShape2D>("Collision2").SetDeferred("disabled", true);
+		GetNode<CollisionPolygon2D>("Collider").SetDeferred("disabled", true);
 
 		Random random = new Random();
 		int markIndex = random.Next(1, 5);
+		GD.Print(markIndex);
 
 		Vector2 spawnPos = GetParent().GetParent<Playground>().GetNode<Marker2D>("Tanks/Markers/Mark" + markIndex).Position;
 
@@ -106,8 +106,7 @@ public partial class Tank : CharacterBody2D
 		_speed = 0f;
 		_time = 0f;
 
-		GetNode<CollisionShape2D>("Collision1").Disabled = false;
-		GetNode<CollisionShape2D>("Collision2").Disabled = false;
+		GetNode<CollisionPolygon2D>("Collider").Disabled = false;
 
 		Visible = true;
 		_isDead = false;

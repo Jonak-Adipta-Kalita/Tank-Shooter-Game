@@ -9,7 +9,6 @@ public partial class Playground : Node2D
 
 	private readonly PackedScene TankScene = GD.Load<PackedScene>("res://Tank/Tank.tscn");
 
-// gives relative pos of new tanks to every pther presetn tank
 	private readonly Dictionary<long, Vector2> _peerSpawnPositions = new();
 	private int _spawnIndex = 0;
 
@@ -24,13 +23,11 @@ public partial class Playground : Node2D
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is not InputEventKey key || !key.Pressed || key.IsEcho()) return;
-		if (Multiplayer.MultiplayerPeer is not null) return; 
+		if (Multiplayer.MultiplayerPeer is null) return; 
 
 		if (key.Keycode == Key.H) StartHost();
 		else if (key.Keycode == Key.J) StartJoin();
 	}
-
-// Hodting connection startup 
 
 	private void StartHost()
 	{
@@ -59,21 +56,17 @@ public partial class Playground : Node2D
 		GD.Print($"Connecting to {JOIN_ADDRESS}:{PORT}...");
 	}
 
-// Multiplayer signal handlers
 	private void OnPeerConnected(long id)
 	{
 		if (!Multiplayer.IsServer()) return;
 
-		// updayte for new tank added
 		foreach (var kvp in _peerSpawnPositions)
 			RpcId(id, nameof(SpawnTank), (int)kvp.Key, kvp.Value);
 
-		// pawn the bitch in
 		var spawnPos = GetNextSpawnPosition();
 		Rpc(nameof(SpawnTank), (int)id, spawnPos);
 	}
 
-// debug connecting and disconnecting
 	
 	private void OnPeerDisconnected(long id)
 	{
@@ -87,7 +80,6 @@ public partial class Playground : Node2D
 	}
 
 
-// RPCs implementation 
 
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = true,
 		TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
@@ -112,7 +104,6 @@ public partial class Playground : Node2D
 		_peerSpawnPositions.Remove((long)peerId);
 	}
 
-// Some fallbacks
 
 	private Vector2 GetNextSpawnPosition()
 	{
@@ -124,7 +115,6 @@ public partial class Playground : Node2D
 			return point.GlobalPosition;
 		}
 
-		// Fallback four corners — adjust to fit your level
 		Vector2[] fallback = {
 			new(100, 100), new(700, 100), new(100, 500), new(700, 500)
 		};

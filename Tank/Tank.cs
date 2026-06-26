@@ -48,16 +48,14 @@ public partial class Tank : CharacterBody2D
 		var velocity = Vector2.Zero;
 		_speed += Initial_Speed + _time * Acceleration;
 
-		if (Input.IsActionPressed("move_right"))
-			velocity.X += _speed;
-		if (Input.IsActionPressed("move_left"))
-			velocity.X -= _speed;
-		if (Input.IsActionPressed("move_down"))
-			velocity.Y += _speed;
-		if (Input.IsActionPressed("move_up"))
-			velocity.Y -= _speed;
+		if (Input.IsActionPressed("move_right")) velocity.X += 1;
+		if (Input.IsActionPressed("move_left"))	velocity.X -= 1;
+		if (Input.IsActionPressed("move_down"))	velocity.Y += 1;
+		if (Input.IsActionPressed("move_up")) velocity.Y -= 1;
 
-		Velocity = velocity;
+		velocity = velocity.Normalized();
+
+		Velocity = velocity * _speed;
 		MoveAndSlide();
 		Position = new Vector2(
 			x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
@@ -77,10 +75,8 @@ public partial class Tank : CharacterBody2D
 			_speed = Initial_Speed;
 		}
 
-		if (Input.IsActionPressed("rotate_left"))
-			Rotation -= 0.05f;
-		if (Input.IsActionPressed("rotate_right"))
-			Rotation += 0.05f;
+		if (Input.IsActionPressed("rotate_left")) Rotation -= 0.05f;
+		if (Input.IsActionPressed("rotate_right")) Rotation += 0.05f;
 	}
 
 	public void GotHit()

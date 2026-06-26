@@ -21,14 +21,14 @@ position = Vector2(800, 450)
 
 [node name="Markers" type="Node2D" parent="Tanks" unique_id=1813488080]
 
-[node name="Mark1" type="Node2D" parent="Tanks/Markers" unique_id=1037584534]
+[node name="Mark1" type="Marker2D" parent="Tanks/Markers" unique_id=1344243754]
 position = Vector2(57.881393, 49.13565)
 
-[node name="Mark2" type="Node2D" parent="Tanks/Markers" unique_id=371081752]
+[node name="Mark2" type="Marker2D" parent="Tanks/Markers" unique_id=1518220934]
 position = Vector2(1542.6195, 50.082985)
 
-[node name="Mark3" type="Node2D" parent="Tanks/Markers" unique_id=262812789]
+[node name="Mark3" type="Marker2D" parent="Tanks/Markers" unique_id=1995335070]
 position = Vector2(57.7452, 849.5145)
 
-[node name="Mark4" type="Node2D" parent="Tanks/Markers" unique_id=1162498893]
+[node name="Mark4" type="Marker2D" parent="Tanks/Markers" unique_id=1285944835]
 position = Vector2(1543.6014, 850.757)

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class Tank : CharacterBody2D
 {
@@ -20,7 +21,7 @@ public partial class Tank : CharacterBody2D
 	{
 		ScreenSize = GetViewportRect().Size;
 		ProjectilePosition = GetNode<Node2D>("Projectile");
-		_defaultSpawn = GlobalPosition; // Fallback if no spawn points exist in the scene
+		_defaultSpawn = GlobalPosition;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -84,22 +85,19 @@ public partial class Tank : CharacterBody2D
 
 	public void GotHit()
 	{
-		if (_isDead) return; // Ignore hits while already dead/respawning
+		if (_isDead) return;
 		_isDead = true;
 
 		Visible = false;
 
-		// Disable both collision shapes so dead tanks can't be hit by stray projectiles
 		GetNode<CollisionShape2D>("Collision1").SetDeferred("disabled", true);
 		GetNode<CollisionShape2D>("Collision2").SetDeferred("disabled", true);
 
-		// Pick a random SpawnPoint from the scene; fall back to where the tank started
-		var spawnPoints = GetTree().GetNodesInGroup("SpawnPoints");
-		Vector2 spawnPos = spawnPoints.Count > 0
-			? ((Node2D)spawnPoints[GD.RandRange(0, spawnPoints.Count - 1)]).GlobalPosition
-			: _defaultSpawn;
+		Random random = new Random();
+		int markIndex = random.Next(1, 5);
 
-		// Respawn after 1.5 seconds
+		Vector2 spawnPos = GetParent().GetParent<Playground>().GetNode<Marker2D>("Tanks/Markers/Mark" + markIndex).Position;
+
 		GetTree().CreateTimer(1.5).Timeout += () => Respawn(spawnPos);
 	}
 
@@ -111,7 +109,6 @@ public partial class Tank : CharacterBody2D
 		_speed = 0f;
 		_time = 0f;
 
-		// Re-enable collision shapes
 		GetNode<CollisionShape2D>("Collision1").Disabled = false;
 		GetNode<CollisionShape2D>("Collision2").Disabled = false;
 

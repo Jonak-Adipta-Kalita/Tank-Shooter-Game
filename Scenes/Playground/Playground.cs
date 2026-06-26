@@ -11,7 +11,7 @@ public partial class Playground : Node2D
 		int markIndex = random.Next(1, 5);
 
 		Node2D Tanks = GetNode<Node2D>("Tanks");
-		Vector2 pos = Tanks.GetNode<Node2D>("Markers/Mark" + markIndex).Position;
+		Vector2 pos = Tanks.GetNode<Marker2D>("Markers/Mark" + markIndex).Position;
 
 		Tank tank = TankScene.Instantiate<Tank>();
 		tank.Position = pos;

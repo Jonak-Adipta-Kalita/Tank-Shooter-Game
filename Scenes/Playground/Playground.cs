@@ -10,7 +10,7 @@ public partial class Playground : Node2D
 	private readonly PackedScene TankScene = GD.Load<PackedScene>("res://Tank/Tank.tscn");
 
 	private readonly Dictionary<long, Vector2> _peerSpawnPositions = new();
-	private int _spawnIndex = 0;
+	private int _spawnIndex = 1;
 
 	public override void _Ready()
 	{
@@ -89,7 +89,7 @@ public partial class Playground : Node2D
 		tank.Name = tankName;
 		tank.Position = spawnPos;          
 		tank.SetMultiplayerAuthority(peerId); 
-		AddChild(tank);
+		GetNode<Node2D>("Tanks").AddChild(tank);
 
 		_peerSpawnPositions[(long)peerId] = spawnPos;
 	}
@@ -102,20 +102,12 @@ public partial class Playground : Node2D
 		_peerSpawnPositions.Remove((long)peerId);
 	}
 
-
 	private Vector2 GetNextSpawnPosition()
 	{
-		var spawnPoints = GetTree().GetNodesInGroup("SpawnPoints");
-		if (spawnPoints.Count > 0)
-		{
-			var point = (Node2D)spawnPoints[_spawnIndex % spawnPoints.Count];
-			_spawnIndex++;
-			return point.GlobalPosition;
-		}
+		Vector2 spawnPos = GetNode<Marker2D>("Tanks/Markers/Mark" + _spawnIndex).Position;
 
-		Vector2[] fallback = {
-			new(100, 100), new(700, 100), new(100, 500), new(700, 500)
-		};
-		return fallback[_spawnIndex++ % fallback.Length];
+		_spawnIndex++;
+
+		return spawnPos;
 	}
 }

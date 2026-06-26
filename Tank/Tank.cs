@@ -42,7 +42,7 @@ public partial class Tank : CharacterBody2D
 			projectile.position = ProjectilePosition.GlobalPosition;
 			projectile.rotation = GlobalRotation;
 
-			GetParent<Playground>().AddChild(projectile);
+			GetParent().GetParent<Playground>().AddChild(projectile);
 		}
 
 		Rpc(nameof(SyncTransform), GlobalPosition, GlobalRotation);

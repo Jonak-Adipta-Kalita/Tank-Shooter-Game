@@ -7,10 +7,12 @@ public partial class Tank : CharacterBody2D
 	[Export]
 	public int Initial_Speed { get; set; } = 1;
 	[Export]
-	public float Acceleration { get; set; } = 0.01f;
+	public float Acceleration { get; set; } = 50f;
 	
 	private float _speed = 0f;
 	private float _time = 0f;
+	private Vector2 _lastDirection = Vector2.Zero;
+
 	private bool _isDead = false;
 	private Vector2 _defaultSpawn;
 
@@ -42,7 +44,7 @@ public partial class Tank : CharacterBody2D
 			projectile.position = ProjectilePosition.GlobalPosition;
 			projectile.rotation = GlobalRotation;
 
-			GetParent().GetParent<Playground>().AddChild(projectile);
+			GetParent().GetParent<Playground>().GetNode("Projectiles").AddChild(projectile);
 		}
 
 		Rpc(nameof(SyncTransform), GlobalPosition, GlobalRotation);
@@ -94,35 +96,42 @@ public partial class Tank : CharacterBody2D
 	private void HandleMovement(double delta)
 	{
 		var velocity = Vector2.Zero;
-		_speed += Initial_Speed + _time * Acceleration;
 
 		if (Input.IsActionPressed("move_right")) velocity.X += 1;
 		if (Input.IsActionPressed("move_left"))  velocity.X -= 1;
 		if (Input.IsActionPressed("move_down"))  velocity.Y += 1;
 		if (Input.IsActionPressed("move_up"))    velocity.Y -= 1;
 
-		velocity = velocity.Normalized();
-		Velocity = velocity * _speed;
-		
+		bool moving = velocity != Vector2.Zero;
+
+		if (moving)
+		{
+			_lastDirection = velocity.Normalized();
+			_time += (float)delta;
+			_speed = Initial_Speed + _time * Acceleration;
+		}
+		else
+		{
+			_time -= (float)delta;
+			_speed = Initial_Speed - _time * Acceleration;
+		}
+
+		_speed = Mathf.Clamp(_speed, 0, 500);
+
+		if (!moving && _speed <= 0.01f)
+		{
+			_speed = 0;
+			_lastDirection = Vector2.Zero;
+			_time = 0;
+		}
+
+		Velocity = _lastDirection * _speed;
 		MoveAndSlide();
-		
+
 		Position = new Vector2(
 			Mathf.Clamp(Position.X, 0, ScreenSize.X),
 			Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
 		);
-
-		bool moving = Input.IsActionPressed("move_right") || Input.IsActionPressed("move_left") ||
-					  Input.IsActionPressed("move_down")  || Input.IsActionPressed("move_up");
-
-		if (moving)
-		{
-			_time += (float)delta;
-		}
-		else
-		{
-			_time = 0f;
-			_speed = Initial_Speed;
-		}
 
 		if (Input.IsActionPressed("rotate_left"))  Rotation -= 0.05f;
 		if (Input.IsActionPressed("rotate_right")) Rotation += 0.05f;

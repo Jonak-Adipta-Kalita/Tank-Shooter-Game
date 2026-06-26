@@ -78,8 +78,7 @@ animations = [{
 radius = 6.7900553
 
 [node name="Projectile" type="CharacterBody2D" unique_id=821334371]
-collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_lc2b3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=533447181]

@@ -11,6 +11,11 @@ script = ExtResource("1_r5fjo")
 position = Vector2(800, 450)
 texture = ExtResource("2_bdrva")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1217989973]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1023575002]
+polygon = PackedVector2Array(0, 0, 0, 900, 1600, 900, 1600, 0, 0, 0, -27, -24, 1612, -24, 1668, 6, 1647, 941, -27, 947, -70, 881, -27, -2, -27, -24)
+
 [node name="Level" type="Node2D" parent="." unique_id=1422692863]
 
 [node name="Eclipse" parent="Level" unique_id=734834413 instance=ExtResource("4_8qsbe")]
@@ -32,3 +37,5 @@ position = Vector2(57.7452, 849.5145)
 
 [node name="Mark4" type="Marker2D" parent="Tanks/Markers" unique_id=1285944835]
 position = Vector2(1543.6014, 850.757)
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=2070572739]

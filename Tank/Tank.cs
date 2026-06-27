@@ -5,7 +5,7 @@ using System;
 public partial class Tank : CharacterBody2D
 {
 	[Export]
-	public int Initial_Speed { get; set; } = 1;
+	public int Initial_Speed { get; set; } = 5;
 	[Export]
 	public float Acceleration { get; set; } = 50f;
 	
@@ -104,6 +104,7 @@ public partial class Tank : CharacterBody2D
 
 		bool moving = velocity != Vector2.Zero;
 
+		// TODO: Fix Decceleration bug
 		if (moving)
 		{
 			_lastDirection = velocity.Normalized();
@@ -113,10 +114,11 @@ public partial class Tank : CharacterBody2D
 		else
 		{
 			_time -= (float)delta;
+			_time = Mathf.Max(_time, 0f); 
 			_speed = Initial_Speed - _time * Acceleration;
 		}
 
-		_speed = Mathf.Clamp(_speed, 0, 500);
+		_speed = Mathf.Clamp(_speed, 5, 500);
 
 		if (!moving && _speed <= 0.01f)
 		{

@@ -14,7 +14,7 @@ texture = ExtResource("2_bdrva")
 [node name="Area2D" type="Area2D" parent="." unique_id=1217989973]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1023575002]
-polygon = PackedVector2Array(0, 0, 0, 900, 1600, 900, 1600, 0, 0, 0, -27, -24, 1612, -24, 1668, 6, 1647, 941, -27, 947, -70, 881, -27, -2, -27, -24)
+polygon = PackedVector2Array(0, 0, 0, 900, 1600, 900, 1600, 0, 0, 0, -27, -24, 1612, -24, 1646, 5, 1647, 941, -27, 947, -34, 898, -27, -2, -27, -24)
 
 [node name="Level" type="Node2D" parent="." unique_id=1422692863]
 

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public partial class Playground : Node2D
 {
-	private static readonly int PORT = OS.GetEnvironment("PORT") != ""
-		? int.Parse(OS.GetEnvironment("PORT"))
-		: 7777;
+	private const int PORT = 7777;
 
 	private const int MAX_PLAYERS = 4;
 

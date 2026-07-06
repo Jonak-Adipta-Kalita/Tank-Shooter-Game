@@ -10,7 +10,7 @@ public partial class Playground : Node2D
 	private const int MAX_PLAYERS = 4;
 
 //render url here
-	private const string JOIN_ADDRESS = "https://tank-shooter-game-xpg4.onrender.com";
+	private const string JOIN_ADDRESS = "tank-shooter-game-xpg4.onrender.com";
 
 	private readonly PackedScene TankScene = GD.Load<PackedScene>("res://Tank/Tank.tscn");
 
@@ -112,7 +112,7 @@ public partial class Playground : Node2D
 		TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	public void RemoveTank(int peerId)
 	{
-		GetNodeOrNull("Tank_" + peerId)?.QueueFree();
+		GetNodeOrNull("Tanks/Tank_" + peerId)?.QueueFree();
 		_peerSpawnPositions.Remove((long)peerId);
 	}
 

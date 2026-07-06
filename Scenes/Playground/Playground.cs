@@ -10,7 +10,7 @@ public partial class Playground : Node2D
 	private const int MAX_PLAYERS = 4;
 
 //render url here
-	private const string JOIN_ADDRESS = "127.0.0.1";
+	private const string JOIN_ADDRESS = "tank-shooter-game.onrender.com/";
 
 	private readonly PackedScene TankScene = GD.Load<PackedScene>("res://Tank/Tank.tscn");
 

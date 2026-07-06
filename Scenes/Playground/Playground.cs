@@ -19,6 +19,7 @@ public partial class Playground : Node2D
 
 	public override void _Ready()
 	{
+		GD.Print("Playground ready. Peer: " + Multiplayer.MultiplayerPeer);
 		Multiplayer.PeerConnected += OnPeerConnected;
 		Multiplayer.PeerDisconnected += OnPeerDisconnected;
 		Multiplayer.ConnectedToServer += OnConnectedToServer;
@@ -29,8 +30,9 @@ public partial class Playground : Node2D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		GD.Print("Input received: " + @event);
 		if (@event is not InputEventKey key || !key.Pressed || key.IsEcho()) return;
-		if (Multiplayer.MultiplayerPeer is not null) return; // Already connected — ignore
+		if (Multiplayer.MultiplayerPeer is not OfflineMultiplayerPeer) return; // block only when needed
 
 		if (key.Keycode == Key.H) StartHost();
 		else if (key.Keycode == Key.J) StartJoin();

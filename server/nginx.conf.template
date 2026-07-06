@@ -1,0 +1,22 @@
+events {}
+
+http {
+    server {
+        listen ${PORT};
+
+        location / {
+            # Plain HTTP with no Upgrade header = Render health check → return 200
+            if ($http_upgrade = "") {
+                return 200 "OK";
+            }
+
+            # WebSocket upgrade → proxy through to Godot on fixed port 7777
+            proxy_pass         http://127.0.0.1:7777;
+            proxy_http_version 1.1;
+            proxy_set_header   Upgrade    $http_upgrade;
+            proxy_set_header   Connection "Upgrade";
+            proxy_set_header   Host       $host;
+            proxy_read_timeout 86400;
+        }
+    }
+}

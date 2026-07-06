@@ -12,4 +12,4 @@ COPY server/ .
 
 RUN chmod +x game.x86_64
 
-CMD ["./game.x86_64", "--headless", "--dedicated-server"]
+CMD ["./start.sh"]
